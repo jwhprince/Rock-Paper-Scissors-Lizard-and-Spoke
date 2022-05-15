@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function App() {
+const App = () => {
   const [userChoice, setUserChoice] = useState('rock');
   const [computerChoice, setComputerChoice] = useState('rock');
   const [userPoints, setUserPoints] = useState(0);
@@ -10,10 +10,10 @@ function App() {
   const [result, setResult] = useState('Let see who wins');
   const [gameOver, setGameOver] = useState(false);
 
-  const choices = ['rock', 'paper', 'scissors', 'lizard', 'spoke'];
+  const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 
-  const handleOnClick = (choice) => {
-    setUserChoice(choice)
+  const handleClick = (value) => {
+    setUserChoice(value)
     generateComputerChoice()
   }
 
@@ -29,20 +29,32 @@ function App() {
   useEffect(() => {
     const comboMoves = userChoice + computerChoice 
     if (userPoints <=4 && computerPoints <=4) {
-      if (comboMoves ===  'rockscissors' || comboMoves === 'paperrock' || comboMoves === 'scissorspaper' || 'rocklizard' || 'lizardspock' || 'spockscissors' || 'scissorslizard' || 'lizardpaper' || 'paperspock' || 'spockrock') {
+      if (comboMoves ===  'rockscissors' || comboMoves === 'paperrock' || comboMoves === 'scissorspaper' || comboMoves === 'rocklizard' || comboMoves === 'lizardspock' || comboMoves === 'spockscissors' || comboMoves === 'scissorslizard' || comboMoves === 'lizardpaper' || comboMoves === 'paperspock' || comboMoves === 'spockrock') {
         const updatedUserPoints = userPoints + 1
         setUserPoints(updatedUserPoints)
         setTurnResult('User got the point')
         if (updatedUserPoints === 5) {
-          setGameOver(true)
           setResult('User wins')
+          const gameOff = true
+          setGameOver(gameOff)
         }
       }
-      if (comboMoves ===  'paperscissors' || comboMoves === 'scissorsrock' || comboMoves === 'rockpaper' || 'spocklizard' || 'scissorsspock' || 'lizardscissors' || 'paperlizard' || 'spockpaper' || 'rockspock' || 'lizardrock') {
+      if (comboMoves ===  'paperscissors' || comboMoves === 'scissorsrock' || comboMoves === 'rockpaper' || comboMoves === 'spocklizard' || comboMoves === 'scissorspock' || comboMoves === 'lizardscissors' || comboMoves === 'paperlizard' || comboMoves === 'spockpaper' || comboMoves === 'rockspock' || comboMoves === 'lizardrock') {
         const updatedComputerPoints = computerPoints + 1  
+        setComputerPoints(updatedComputerPoints)
+        setTurnResult('Computer got the point')
+        if (updatedComputerPoints === 5) {
+          setResult('Computer wins')
+          const gameOff = true
+          setGameOver(gameOff)
+        }
+      }
+      if (comboMoves ===  'rockrock' || comboMoves === 'paperpaper' || comboMoves === 'scissorscissors' || comboMoves === 'lizardlizard' || comboMoves === 'spockspock' ) {
+        setTurnResult('No one got a point')
       }
     }
-  },[])
+  },[computerChoice, userChoice])
+  
   
   return (
     <div className="App">
@@ -63,7 +75,7 @@ function App() {
 
       <div children='button-div'>
         {choices.map((choice, index) => 
-          <button className='button' key={index} onClick={() => handleOnClick(choice)}>
+          <button className='button' key={index} onClick={() => handleClick(choice)}>
             {choice}
           </button>
         )}

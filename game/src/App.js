@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './App.css'
 
 const App = () => {
   const [userChoice, setUserChoice] = useState('rock');
@@ -58,24 +58,24 @@ const App = () => {
   
   return (
     <div className="App">
-      <h1 className='heading'>Rock Paper Scissors Lizard and Spoke</h1>
+      <h1 className='heading'>Rock Paper Scissors Lizard Spoke</h1>
       <div className='score'>
         <h1>User Points: {userPoints}</h1>
         <h1>Computer Points: {computerPoints}</h1>
 
       </div>
-      <div className='choices'>
+      <div className='choice'>
         <div className='choice-user'>
           <img className='user-hand' alt='user-hand' src={`./images/${userChoice}.png`} />
         </div>
         <div className='choice-computer'>
-          <img className='user-computer' alt='computer-hand' src={`./images/${computerChoice}.png`} />
+          <img className='computer-hand' alt='computer-hand' src={`./images/${computerChoice}.png`} />
         </div>
       </div>
 
       <div children='button-div'>
         {choices.map((choice, index) => 
-          <button className='button' key={index} onClick={() => handleClick(choice)}>
+          <button className='button' key={index} onClick={() => handleClick(choice)} disabled={gameOver}>
             {choice}
           </button>
         )}

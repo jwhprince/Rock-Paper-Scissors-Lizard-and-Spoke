@@ -68,10 +68,15 @@ const App = () => {
         <div className='choice-user'>
           <img className='user-hand' alt='user-hand' src={`./images/${userChoice}.png`} />
         </div>
+        
+        <img className='instruction' alt='' src={'./images/q.png'} />
+      
         <div className='choice-computer'>
           <img className='computer-hand' alt='computer-hand' src={`./images/${computerChoice}.png`} />
         </div>
       </div>
+
+      
 
       <div children='button-div'>
         {choices.map((choice, index) => 

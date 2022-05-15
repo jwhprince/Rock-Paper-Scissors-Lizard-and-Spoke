@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,8 +9,9 @@
 .App {
     text-align: center;
     height: 100vh;
+    width: 100vw;
     background-color: lightblue;
-    font-family: sans-serif;
+    font-family: Macondo;
 }
 
 .heading {
@@ -32,11 +35,26 @@
 .computer-hand {
     width: 200px;
     transform: rotateY(180deg) ;
+    
 }
 
 .user-hand {
     width: 200px;
+    
 }
+
+
+
+.instruction {
+    position: absolute;
+    left: 700px; right: 10px; top: 10px; bottom: 10px;
+    width: 470px;
+    max-width: 100%;
+    
+    
+    
+}
+
 
 .button-div {
     display: flex;
@@ -45,14 +63,87 @@
 }
 
 .button {
-    width: 150px;
+    /* width: 150px;
     height: 50px;
     justify-content: space-around;
     align-items: center;
     background-color: yellow;
-    font-size: 20px;
-    border-radius: 5px;
+    font-size: 25px;
+    border-radius: 5px; */
     cursor: pointer;
+    font-family: Macondo;
+    position: relative;
+    padding: 10px 30px;
+    margin: 0 15px;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 25px;
+    overflow: hidden;
+    transition: 0.5s;
+    
+}
+
+/* .button:nth-child(2) {
+    filter: hue-rotate(300deg);
+}
+.button:nth-child(3) {
+    filter: hue-rotate(-190deg);
+}
+.button:nth-child(4) {
+    filter: hue-rotate(-270deg);
+}
+
+.button:nth-child(5) {
+    filter: hue-rotate(-220deg);
+} */
+
+.button:hover {
+    background: #f5ea2d;
+    color: black ;
+    box-shadow: 0 0 50px #f5ea2d ;
+    transition-delay: 0.2s;
+}
+
+.button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+
+}
+
+.button:hover:before {
+    width: 100%;
+    height: 100%;
+    transition-delay: 0.2s;
+}
+
+.button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+
+}
+
+.button:hover:after {
+    width: 100%;
+    height: 100%;
+    transition-delay: 0.2s;
 }
 
 .result {
